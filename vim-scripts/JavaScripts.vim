@@ -4,8 +4,7 @@ function PublicClass(name)
 endfunction
 
 function Println(text)
-  execute "normal oSystem.out.println(\"" . a:text . "\");"
-  System.out.println("Test string");
+  execute "normal oSystem.out.println(a:text);"
 endfunction
 
 command! -nargs=1 PublicClass :call PublicClass(<f-args>)
