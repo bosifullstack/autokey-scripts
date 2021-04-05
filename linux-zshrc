@@ -1,26 +1,22 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Make Manjaro Gnome terminal open tab on same folder
-source /etc/profile.d/vte.sh
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/fbosi/.oh-my-zsh"
-
 # Change language to pt-br to accept accents
 export LANG=pt_BR.utf8
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+# Make Manjaro Gnome terminal open tab on same folder
+source /etc/profile.d/vte.sh
 
-plugins=(
-  git
-)
+# Git prompt features (read ~/.git-prompt.sh for reference)
+export GIT_PS1_SHOWDIRTYSTATE="true"
+export GIT_PS1_SHOWSTASHSTATE="true"
+export GIT_PS1_SHOWUNTRACKEDFILES="true"
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS="true"
 
-source $ZSH/oh-my-zsh.sh
+# Get git script to add git data on PROMPT
+source ~/git-prompt.sh
+setopt PROMPT_SUBST ; PS1='%F{cyan}[%n@%m]%f - %c$(__git_ps1 " (%s)")\$ '
 
 # User configuration
 
