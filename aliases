@@ -100,7 +100,7 @@ cdls() {
 
 alias cd='cdls'
 
-alias wordpress='cd ~/Local Sites/web-front-react-and-wordpress/app/public/wp-content/themes/react-and-wordpress'
+alias wordpress='cd ~/Local\ Sites/bosi-backend/app/public/wp-content/themes/bosibackend'
 alias downloads='cd ~/Downloads && x'
 alias dotfiles='cd ~/dotfiles && x'
 alias puc='cd ~/texts/studies/puc && x'
