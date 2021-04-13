@@ -9,6 +9,9 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
 
+# Make Manjaro Gnome terminal open tab on same folder
+source /etc/profile.d/vte.sh
+
 export EDITOR='vim'
 
 # Compilation flags
