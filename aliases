@@ -1,6 +1,9 @@
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias parrot='curl parrot.live'
 
+# Force cp command without ask to confirm
+alias cp='cp -rf'
+
 alias ls='ls --color=auto'
 
 alias rmall='yes | rm -r'
