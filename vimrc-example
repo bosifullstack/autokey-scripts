@@ -31,7 +31,6 @@ Plug 'aklt/plantuml-syntax'
 Plug 'https://github.com/markonm/traces.vim.git'
 call plug#end()
 
-set mouse=a
 set foldmethod=indent " Set fold to indent
 set nofoldenable " Open file without folders
 
@@ -291,6 +290,12 @@ nnoremap <leader>cc "+yy<CR>
 vnoremap <leader>d "+d<CR>
 nnoremap <leader>dd "+dd<CR>
 nnoremap <leader>s "+p<CR>
+
+" Remaps to send deleted and change to black hole register
+nnoremap d "_d
+nnoremap c "_c
+vnoremap d "_d
+vnoremap c "_c
 
 " Remaping leader to Prettier and/ Format - Steam
 nnoremap <leader>p :Format<CR>
