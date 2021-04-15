@@ -3,7 +3,7 @@
 "===============================================================================
 
 " =============================================================================
-" VIM-POLYGLOT
+" Plugins
 " =============================================================================
 let g:vim_json_syntax_conceal = 0
 let g:vim_markdown_conceal = 0
@@ -20,88 +20,61 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/frazrepo/vim-rainbow.git'
 Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'https://github.com/tyru/open-browser.vim.git'
 Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'aklt/plantuml-syntax'
+Plug 'junegunn/vim-peekaboo'
 
 " Traces.vim do not work with
 Plug 'https://github.com/markonm/traces.vim.git'
 call plug#end()
 
+" =============================================================================
+" Vim basic configs
+" =============================================================================
+
+set noerrorbells " Remove error sound
 set foldmethod=indent " Set fold to indent
 set nofoldenable " Open file without folders
+set nowrap " Avoid breaking text lines automatically
+set nobackup "Stoping vim from creating swp files
+set nowritebackup "Stoping vim from creating swp files
+set noswapfile "Stoping vim from creating swp files
+set tabstop=2 " Tab size = 2
+set expandtab " Tabs = spaces
+set smarttab " Tabs = spaces
+set shiftwidth=2 " Tab size = 2
+set incsearch " Enable incremental searching
+set scrolloff=8 " Make vim scroll 8 lines before the end
+set colorcolumn=80 " Add a bar to alert about line too long
+set wildmenu " Display completion matches on your status line
+set splitright " Setting vplit to right
+set rtp+=/usr/local/opt/fzf " Adding fzf to vim
+command! -nargs=0 Prettier :CocCommand prettier.formatFile " Adding the command :Prettier
+set history=100 " Save 100 items in history
+set showcmd " Display the incomplete commands in the bottom right-hand side of your screen.  
+set hlsearch " Highlight search matches
+set smartcase " Override ignorecase option for search pattern contains upper case.
+set relativenumber " Set relative line number
+set nu " Set current line number on the line you are
+set lbr " Don't line wrap mid-word.
+set autoindent " Copy the indentation from the current line.
+set bg=dark " Tell vim what background you are using
+set laststatus=2 "Configuration to make the lightline plugin work
+set noshowmode "Removing the show note bellow since I'm using lightline
 
-"Stoping vim from creating swp files
-set nobackup
-set nowritebackup
-set noswapfile
+" =============================================================================
+" Theme configs
+" =============================================================================
 
-" Display completion matches on your status line
-set wildmenu
-
-" Setting vplit to right
-:set splitright
-
-" Adding fzf
-set rtp+=/usr/local/opt/fzf
-
-" Adding the command :Prettier to reformat file
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Save 100 items in history
-set history=100
-
-" Display the incomplete commands in the bottom right-hand side of your screen.  
-set showcmd
-
-" Highlight search matches
-set hlsearch
-
-" Enable incremental searching
-set incsearch
-
-" Override the 'ignorecase' option if the search pattern contains upper case characters.
-set smartcase
-
-" Turn on relative line numbering
-set relativenumber
-
-" Don't line wrap mid-word.
-set lbr
-
-" Copy the indentation from the current line.
-set autoindent
-
-" Use spaces instead of tabs
-set expandtab
-
-" Enable smart tabs
-set smarttab
-
-" Make a tab equal to 4 spaces
-set shiftwidth=2
-set tabstop=2
-
-" Tell vim what background you are using
-set bg=dark
-
-" Seting a color theme
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='soft'
-colorscheme gruvbox
-syntax on
-
+let g:gruvbox_italic=1 " Seting a color theme
+let g:gruvbox_contrast_dark='soft' " Seting a color theme
+colorscheme gruvbox " Seting a color theme
+syntax on " Seting a color theme
 " Set background to transparent
 hi Normal guibg=NONE ctermbg=NONE
-
-"Configuration to make the lightline plugin work
-set laststatus=2
-
-"Removing the show note bellow since I'm using lightline
-set noshowmode
 
 " =============================================================================
 " Plugins configurations
@@ -251,9 +224,7 @@ nnoremap <leader>e :Explore<CR>
 " =============================================================================
 " Creating a function to initWork
 function! InitWork()
-  :e ~/texts/todoList.md
-  :vsplit<CR>==
-  :e ~/texts/workTodoList.md
+  execute "normal :tab drop ~/texts/work-notes.md"
 endfunction
 
 " Setting function InitWork to :Init
@@ -280,6 +251,7 @@ command! -nargs=0 Journal :call InitJournalEntry()
 " =============================================================================
 " Remaps
 " =============================================================================
+let mapleader = " "
 " Remap for CocAction
 nnoremap <leader>a :CocAction<CR>
 nnoremap <leader>c :CocList<CR>
@@ -291,14 +263,16 @@ vnoremap <leader>d "+d<CR>
 nnoremap <leader>dd "+dd<CR>
 nnoremap <leader>s "+p<CR>
 
-" Remaps to send deleted and change to black hole register
-nnoremap d "_d
-nnoremap c "_c
-vnoremap d "_d
-vnoremap c "_c
+" Remaps to send deleted and change to unused register
+nnoremap d "md
+nnoremap c "mc
+vnoremap d "md
+vnoremap c "mc
+" Copy deleted or changed
+nnoremap <leader>p "mp
 
 " Remaping leader to Prettier and/ Format - Steam
-nnoremap <leader>p :Format<CR>
+nnoremap <leader>f :Format<CR>
 
 " Fast split navigation with <Ctrl> + hjkl.
 noremap <c-h> <c-w>h
@@ -320,7 +294,6 @@ nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader>z :FZF<CR>
 
 " Add shortcut to save and close all
-
 nnoremap ZZ :wqall<CR>
 
 " Ctrl+l to clear highlight
@@ -331,4 +304,3 @@ autocmd FileType java set makeprg=javac\ %
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C.%#
 nnoremap <leader>m :make<CR>
 nnoremap <leader>n :!mvn package<CR>
-
