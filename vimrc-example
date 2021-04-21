@@ -22,6 +22,8 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'aklt/plantuml-syntax'
 Plug 'junegunn/vim-peekaboo'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 " Traces.vim do not work with
 Plug 'https://github.com/markonm/traces.vim.git'

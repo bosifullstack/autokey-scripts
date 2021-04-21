@@ -26,6 +26,9 @@ source ~/dotfiles/aliases
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Make vim fzf ignore what is on gitignore
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+
 # aliases for the linux
 
 alias work='cd ~/work'
