@@ -23,6 +23,7 @@ Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'aklt/plantuml-syntax'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sheerun/vim-polyglot'
+Plug 'vimwiki/vimwiki'
 
 " Traces.vim do not work with
 Plug 'https://github.com/markonm/traces.vim.git'

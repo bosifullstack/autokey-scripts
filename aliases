@@ -73,10 +73,10 @@ gitPR () {
   taskID=$( echo $currentBranch | grep '/.*' | cut -f 2 -d '/' | cut -f 1 -d '-' )
   gh pr create --base rasa --title "#$taskID -$1" --web
 }
-gitPRmaster () {
+gitPRmain () {
   currentBranch=$( git branch --show-current )
   taskID=$( echo $currentBranch | grep '/.*' | cut -f 2 -d '/' | cut -f 1 -d '-' )
-  gh pr create --base master --title "Cherry | Master | #$taskID -$1" --web
+  gh pr create --base main --title "Cherry | Main | #$taskID -$1" --web
 }
 
 alias gopr=gitOpenPR
