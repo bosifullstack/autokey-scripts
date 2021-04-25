@@ -23,10 +23,12 @@ Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'aklt/plantuml-syntax'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sheerun/vim-polyglot'
-Plug 'vimwiki/vimwiki'
 
-" Traces.vim do not work with
-Plug 'https://github.com/markonm/traces.vim.git'
+" =============================================
+" For docs
+" =============================================
+Plug 'vimwiki/vimwiki'
+Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
 call plug#end()
 
 " =============================================================================
@@ -214,41 +216,21 @@ command! -nargs=0 Format :call CocAction('format')
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" NerdTree configs
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
 nnoremap <leader>e :Explore<CR>
 
 " =============================================================================
-" Personal functions
+" Personal docs
 " =============================================================================
-" Creating a function to initWork
-function! InitWork()
-  execute "normal :tab drop ~/texts/work-notes.md"
-endfunction
-
-" Setting function InitWork to :Init
-command! -nargs=0 Init :call InitWork()
-
-" Creating a funtion to auto-start a journal entry
-function! InitJournalEntry()
-  let day = strftime("%Y-%m-%d")
-  let filePath = "~/texts/journal/" . day . ".md"
-  execute "e " . filePath
-  let firstLine = "# " . day
-  execute "normal i" . firstLine
-endfunction
-
-" Setting function InitJournalEntry to :Journal
-command! -nargs=0 Journal :call InitJournalEntry()
-
+let g:vimwiki_list = [{'path': '~/texts/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:instant_markdown_autostart = 0         " Turns off auto preview
+map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
+map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 " =============================================================================
 " Snippets
 " =============================================================================
   source ~/dotfiles/vim-scripts/ReactScripts.vim
   source ~/dotfiles/vim-scripts/NodeScripts.vim
-
 " =============================================================================
 " Remaps
 " =============================================================================
