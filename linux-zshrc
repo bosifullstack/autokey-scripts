@@ -23,6 +23,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/dotfiles/scripts:$PATH"
 source ~/dotfiles/aliases
+source "$HOME/.vim/gruvbox_256palette.sh" # Source gruvbox real colors
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
