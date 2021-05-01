@@ -27,7 +27,6 @@ Plug 'sheerun/vim-polyglot'
 " =============================================
 " For docs
 " =============================================
-Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
 call plug#end()
 
@@ -38,7 +37,6 @@ call plug#end()
 set noerrorbells " Remove error sound
 set foldmethod=indent " Set fold to indent
 set nofoldenable " Open file without folders
-set nowrap " Avoid breaking text lines automatically
 set nobackup "Stoping vim from creating swp files
 set nowritebackup "Stoping vim from creating swp files
 set noswapfile "Stoping vim from creating swp files
@@ -76,8 +74,6 @@ let g:gruvbox_italic=1 " Seting a color theme
 let g:gruvbox_contrast_dark='soft' " Seting a color theme
 colorscheme gruvbox " Seting a color theme
 syntax on " Seting a color theme
-" Set background to transparent
-hi Normal guibg=NONE ctermbg=NONE
 
 " =============================================================================
 " Plugins configurations
@@ -221,9 +217,8 @@ nnoremap <leader>e :Explore<CR>
 " =============================================================================
 " Personal docs
 " =============================================================================
-let g:vimwiki_list = [{'path': '~/texts/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:instant_markdown_autostart = 0         " Turns off auto preview
+let g:instant_markdown_port = 8888
 map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 " =============================================================================
@@ -244,14 +239,6 @@ nnoremap <leader>cc "+yy<CR>
 vnoremap <leader>d "+d<CR>
 nnoremap <leader>dd "+dd<CR>
 nnoremap <leader>s "+p<CR>
-
-" Remaps to send deleted and change to unused register
-nnoremap d "md
-nnoremap c "mc
-vnoremap d "md
-vnoremap c "mc
-" Copy deleted or changed
-nnoremap <leader>p "mp
 
 " Remaping leader to Prettier and/ Format - Steam
 nnoremap <leader>f :Format<CR>
