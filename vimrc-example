@@ -23,6 +23,7 @@ Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'aklt/plantuml-syntax'
 Plug 'junegunn/vim-peekaboo'
 Plug 'sheerun/vim-polyglot'
+Plug 'arcticicestudio/nord-vim' " Nord theme
 
 " =============================================
 " For docs
@@ -59,8 +60,8 @@ set relativenumber " Set relative line number
 set nu " Set current line number on the line you are
 set lbr " Don't line wrap mid-word.
 set autoindent " Copy the indentation from the current line.
-set bg=dark " Tell vim what background you are using
 set laststatus=2 "Configuration to make the lightline plugin work
+set bg=dark " Tell vim what background you are using
 set noshowmode "Removing the show note bellow since I'm using lightline
 
 " Change leader to space
@@ -70,10 +71,7 @@ let mapleader = " "
 " Theme configs
 " =============================================================================
 
-let g:gruvbox_italic=1 " Seting a color theme
-let g:gruvbox_contrast_dark='soft' " Seting a color theme
-colorscheme gruvbox " Seting a color theme
-syntax on " Seting a color theme
+colorscheme nord
 
 " =============================================================================
 " Plugins configurations
