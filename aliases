@@ -26,6 +26,9 @@ alias n='npm'
 alias nr='npm run'
 alias nid='npm install --save-dev'
 
+alias run='npm run start:rasa'
+alias run-prod='npm run start:production'
+
 ############## Git aliases ###############################################
 
 alias ga='git add .'
@@ -33,6 +36,7 @@ alias gap='git add -p'
 alias gai='git add -i'
 alias gc='git commit'
 alias gcc='git checkout'
+alias gcp='git cherry-pick'
 alias gp='git push'
 alias gpp='git pull'
 alias gs='git status'
@@ -46,6 +50,11 @@ alias gitsub='git submodule update --init --recursive'
 gacp () {
   ga
   git commit
+  gp
+}
+gacpnoverify() {
+  ga
+  git commit --no-verify
   gp
 }
 
@@ -106,6 +115,9 @@ cdls() {
 alias cd='cdls'
 
 alias wordpress='cd ~/Local\ Sites/bosi-backend/app/public/wp-content/themes/bosibackend'
+alias anatheme='cd ~/Local\ Sites/ana-clara/app/public/wp-content/themes/anaClara'
+alias lumatheme='cd ~/Local\ Sites/lumahealth-2019/app/public/wp-content/themes/LumaHealth2'
+alias lumasass='sass ~/Local\ Sites/lumahealth-2019/app/public/wp-content/themes/LumaHealth2/assets/sass/style.scss ~/Local\ Sites/lumahealth-2019/app/public/wp-content/themes/LumaHealth2/css/style2.css'
 alias downloads='cd ~/Downloads && x'
 alias dotfiles='cd ~/dotfiles && x'
 alias puc='cd ~/texts/studies/puc && x'
@@ -124,11 +136,15 @@ alias text='cd ~/texts'
 alias reads='cd ~/texts/readings'
 alias literature='cd ~/texts/literature'
 
+startFront() {
+  wait cd ~/work/web-app
+  gpp
+  run
+}
+
 ######################### System specifics ###################################
 if [[ $OSTYPE == "darwin"* ]]
   then alias v="~/nvim-osx64/bin/nvim"
-  alias run='npm run start:stage'
-  alias run-prod='npm run start:production'
   alias sisnettheme='cd ~/Local\ Sites/sisnet-code-shop/app/public/wp-content/themes/sisnet && x'
   
   else
