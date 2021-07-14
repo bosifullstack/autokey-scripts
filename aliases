@@ -135,6 +135,8 @@ alias python='cd ~/study/python'
 alias text='cd ~/texts'
 alias reads='cd ~/texts/readings'
 alias literature='cd ~/texts/literature'
+alias run='npm run start:stage'
+alias run-prod='npm run start:production'
 
 startFront() {
   wait cd ~/work/web-app
