@@ -1,4 +1,4 @@
-"==============================================================================
+" ==============================================================================
 "                              Felipe's Bosi vimrc                              
 "===============================================================================
 
@@ -20,6 +20,7 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/frazrepo/vim-rainbow.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'aklt/plantuml-syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'arcticicestudio/nord-vim' " Nord theme
