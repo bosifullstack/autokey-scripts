@@ -21,13 +21,13 @@ Plug 'https://github.com/frazrepo/vim-rainbow.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'aklt/plantuml-syntax'
-Plug 'junegunn/vim-peekaboo'
 Plug 'sheerun/vim-polyglot'
 Plug 'arcticicestudio/nord-vim' " Nord theme
 
 " =============================================
 " For docs
 " =============================================
+Plug 'https://github.com/tyru/open-browser.vim.git' " Important for plantuml
 Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
 call plug#end()
 
@@ -72,6 +72,7 @@ let mapleader = " "
 " =============================================================================
 
 colorscheme nord
+set background=dark
 
 " =============================================================================
 " Plugins configurations
@@ -154,8 +155,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <left> <Plug>(coc-diagnostic-prev)
+nmap <silent> <right> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -227,6 +228,43 @@ map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 " =============================================================================
 " Remaps
 " =============================================================================
+" H K L J move cursor
+nnoremap J <c-d>
+nnoremap K <c-u>
+nnoremap H ^
+nnoremap L g$
+
+" Make Y behave as normal Vim
+nnoremap Y yg_
+
+" Keep it centered on search
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Adds breakpoints for insert mode
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap ] ]<c-g>u
+inoremap } }<c-g>u
+inoremap ) )<c-g>u
+nnoremap <leader><F2> :%s///gc<left><left><left><left>
+
+" Replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+
+" Moves lines on vim
+vnoremap J :m '>1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==a
+inoremap <C-k> <esc>:m .-2<CR>==a
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+
+" cd vim into the directory of the current buffer.
+nnoremap <leader>cd :cd %:p:h<CR>
+
 " Remap for CocAction
 nnoremap <leader>a :CocAction<CR>
 nnoremap <leader>c :CocList<CR>
@@ -236,7 +274,6 @@ vnoremap <leader>c "+y<CR>
 nnoremap <leader>cc "+yy<CR>
 vnoremap <leader>d "+d<CR>
 nnoremap <leader>dd "+dd<CR>
-nnoremap <leader>s "+p<CR>
 
 " Remaping leader to Prettier and/ Format - Steam
 nnoremap <leader>f :Format<CR>
@@ -246,6 +283,7 @@ noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
+noremap <c-p> <c-w>p
 
 " Remap to vertical split and horizontal split
 nnoremap <leader>v :vsplit<CR>==
