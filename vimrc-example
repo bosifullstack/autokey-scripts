@@ -23,6 +23,7 @@ Plug 'https://github.com/weirongxu/plantuml-previewer.vim.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'aklt/plantuml-syntax'
 Plug 'sheerun/vim-polyglot'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'arcticicestudio/nord-vim' " Nord theme
 
 " =============================================
@@ -233,7 +234,7 @@ map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 nnoremap J <c-d>
 nnoremap K <c-u>
 nnoremap H ^
-nnoremap L g$
+nnoremap L $
 
 " Make Y behave as normal Vim
 nnoremap Y yg_
